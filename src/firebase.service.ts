@@ -1,11 +1,11 @@
 import crashlytics from '@react-native-firebase/crashlytics';
 
 export class FirebaseService {
-  private static _instance: FirebaseService
+  private static _instance: FirebaseService;
 
   public static getInstance(): FirebaseService {
-    if (!this._instance) this._instance = new this()
-    return this._instance
+    if (!this._instance) this._instance = new this();
+    return this._instance;
   }
 
   log(message: string) {
