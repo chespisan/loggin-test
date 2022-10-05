@@ -1,21 +1,26 @@
 import crashlytics from '@react-native-firebase/crashlytics';
 
 export class FirebaseService {
+  private static _instance: FirebaseService
 
-  getCrashLog(message: string) {
-    return crashlytics().log(message)
+  public static getInstance(): FirebaseService {
+    if (!this._instance) this._instance = new this()
+    return this._instance
   }
 
-  setCrashAttribute(name: string, value: string) {
-    return crashlytics().setAttribute(name, value)
+  log(message: string) {
+    return crashlytics().log(message);
   }
 
-  setCrashAttributes(data: any) {
-    return crashlytics().setAttributes(data)
+  setAttribute(name: string, value: string) {
+    return crashlytics().setAttribute(name, value);
   }
 
-  setCrashError(error: Error) {
-    return crashlytics().recordError(error)
+  setAttributes(data: any) {
+    return crashlytics().setAttributes(data);
   }
 
+  recordError(error: Error) {
+    return crashlytics().recordError(error);
+  }
 }
